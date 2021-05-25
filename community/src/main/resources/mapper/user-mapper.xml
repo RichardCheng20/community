@@ -19,36 +19,33 @@
         where id = #{id}
     </select>
 
-    <!--    User selectByName(String username);-->
     <select id="selectByName" resultType="User">
         select <include refid="selectFields"></include>
         from user
         where username = #{username}
     </select>
 
-    <!--    User selectByEmail(String email);-->
     <select id="selectByEmail" resultType="User">
         select <include refid="selectFields"></include>
         from user
         where email = #{email}
     </select>
 
-    <!--    int insertUser(User user);如果参数是一个bean就需要声明-->
     <insert id="insertUser" parameterType="User" keyProperty="id">
         insert into user (<include refid="insertFields"></include>)
         values(#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createTime})
     </insert>
 
-    <!--    int updateStatus(int id, int status);-->
     <update id="updateStatus">
         update user set status = #{status} where id = #{id}
     </update>
-    <!--    int updateHeader(int id, String headerUrl);-->
+
     <update id="updateHeader">
         update user set header_url = #{headerUrl} where id = #{id}
     </update>
-    <!--    int updatePassword(int id, String password);-->
+
     <update id="updatePassword">
         update user set password = #{password} where id = #{id}
     </update>
+
 </mapper>

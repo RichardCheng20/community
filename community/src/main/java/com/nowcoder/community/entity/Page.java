@@ -19,7 +19,6 @@ public class Page {
     }
 
     public void setCurrent(int current) {
-        //防止用户输入负数
         if (current >= 1) {
             this.current = current;
         }
@@ -78,12 +77,11 @@ public class Page {
     }
 
     /**
-     * 显示部分， 获取起始页码 从第几页到第几页
+     * 获取起始页码
      *
      * @return
      */
     public int getFrom() {
-        //最近的几页即可
         int from = current - 2;
         return from < 1 ? 1 : from;
     }
@@ -96,7 +94,6 @@ public class Page {
     public int getTo() {
         int to = current + 2;
         int total = getTotal();
-        //到了最后一页
         return to > total ? total : to;
     }
 
