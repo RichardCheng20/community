@@ -14,4 +14,10 @@ public interface DiscussPostMapper {
     //需要知道一共有多少行,返回行数。userId为0不参与，个人主页我的贴子就需要这个条件
     //@Param注解的作用是给参数起别名,如果需要动态拼一个条件，并且这个方法有且只有这一个条件/参数，那么参数之前必须有别名
     int selectDiscussPostRows(@Param("userId") int userId);
+
+    int insertDiscussPost(DiscussPost discussPost);
+
+    DiscussPost selectDiscussPostById(int id);
+
+    int updateCommentCount(int id, int commentCount);
 }
