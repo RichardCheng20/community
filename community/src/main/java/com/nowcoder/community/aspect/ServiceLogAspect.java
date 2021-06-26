@@ -30,6 +30,9 @@ public class ServiceLogAspect {
         // 用户[1.2.3.4],在[xx时间x],  访问了[com.nowcoder.community.service.xx功能x()].
         //RequestContextHolder中getRequestAttributes，转换成子类型。
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attributes == null) {
+            return;
+        }
         HttpServletRequest request = attributes.getRequest();//得到request对象
         String ip = request.getRemoteHost();
         String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
